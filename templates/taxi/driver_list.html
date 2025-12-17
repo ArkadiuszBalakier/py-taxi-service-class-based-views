@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
 
-</body>
-</html>
+{% block content %}
+  <h2>List of drivers</h2>
+  {% if driver_list %}
+    <ul>
+      {% for driver in driver_list %}
+        <li>
+          <span>
+            <a href="#">{{ driver.username }}</a>: {{ driver.first_name }} {{ driver.last_name }}
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}
