@@ -2,13 +2,44 @@
 
 {% block content %}
   <h2>Driver details</h2>
-  <p><strong>{{ driver.first_name }} {{ driver.last_name }}</strong></p>
-  <div>
-    <h3>Cars</h3>
-    {% for car in driver.cars.all %}
-      <hr>
-      <p class="text-muted">{{ car.id }}</p>
-      <p>{{ car.model }}</p>
-    {% endfor %}
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Driver License</th>
+        <th>Driver nickname</th>
+        <th>email</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td>{{ driver.first_name }}</td>
+          <td>{{ driver.last_name }}</td>
+          <td>{{ driver.license_number }}</td>
+          <td>{{ driver.username }}</td>
+          <td>{{ driver.email }}</td>
+        </tr>
+    </tbody>
+  </table>
+  <hr>
+  <h2>Cars</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Car model</th>
+        <th>Manufactured</th>
+        <th>Country</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for car in driver.cars.all  %}
+        <tr>
+          <td>{{ car.model }}</td>
+          <td>{{ car.manufacturer.name }}</td>
+          <td>{{ car.manufacturer.country }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
